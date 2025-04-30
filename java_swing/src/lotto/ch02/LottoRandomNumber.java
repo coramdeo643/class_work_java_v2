@@ -1,4 +1,4 @@
-package lotto.ch01;
+package lotto.ch02;
 
 import java.util.Arrays;
 import java.util.Random;
