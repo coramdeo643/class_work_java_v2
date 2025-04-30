@@ -11,12 +11,9 @@ import java.io.IOException;
 
 public class GameFrame extends JFrame implements KeyListener {
 
-    private static final int WIDTH = 1000;
-    private static final int HEIGHT = 800;
-
     private int playerX = 500;
     private int playerY = 250;
-    private int player2X =300;
+    private int player2X = 300;
     private int player2Y = 250;
 
     private boolean flag = true;
@@ -59,7 +56,8 @@ public class GameFrame extends JFrame implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {    }
+    public void keyTyped(KeyEvent e) {
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -76,13 +74,14 @@ public class GameFrame extends JFrame implements KeyListener {
         repaint();
 
     }
+
     @Override
     public void keyReleased(KeyEvent e) {
         //System.out.println("keyCode : " + e.getKeyCode());
     }
 
     // inner class construct
-    private class ImagePanel extends JPanel implements Runnable{
+    private class ImagePanel extends JPanel implements Runnable {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -107,10 +106,10 @@ public class GameFrame extends JFrame implements KeyListener {
                 if (player2X >= 800) {
                     direction = false;
                 }
-                if (player2X <=100) {
+                if (player2X <= 100) {
                     direction = true;
                 }
-                if ((playerX >= player2X && playerX <= player2X+30) && (playerY >= player2Y && playerY <= player2Y+70)){
+                if ((playerX >= player2X && playerX <= player2X + 30) && (playerY >= player2Y && playerY <= player2Y + 70)) {
                     player1 = null;
                 }
 
