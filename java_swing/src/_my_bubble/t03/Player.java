@@ -1,4 +1,4 @@
-package bubble.test03;
+package _my_bubble.t03;
 
 import javax.swing.*;
 
@@ -25,6 +25,7 @@ public class Player extends JLabel implements Moveable {
     // wall touch status
     private boolean lWallTouch;
     private boolean rWallTouch;
+    private boolean uBottom;
 
     // Alt+Insert Getter Setter
     @Override
@@ -84,6 +85,7 @@ public class Player extends JLabel implements Moveable {
     public boolean isrWallTouch() {
         return rWallTouch;
     }
+    public boolean isuBottom() {return uBottom;}
 
     public void setX(int x) {
         this.x = x;
@@ -131,6 +133,9 @@ public class Player extends JLabel implements Moveable {
 
     public void setrWallTouch(boolean rWallTouch) {
         this.rWallTouch = rWallTouch;
+    }
+    public void setuBottom(boolean uBottom) {this.uBottom = uBottom;
+        System.out.println("u");
     }
 
     public Player() {

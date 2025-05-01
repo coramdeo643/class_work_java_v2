@@ -1,4 +1,4 @@
-package bubble.test03;
+package _my_bubble.t03;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -14,7 +14,7 @@ public class BubbleFrame extends JFrame {
         setInitLayout();
         addEventListener();
 
-        new Thread (new BackgroundPlayerService(player)).start();
+        new Thread (new BgPS(player)).start();
     }
     private void init() {
         setTitle("Bubble Bobble Game");
@@ -69,6 +69,8 @@ public class BubbleFrame extends JFrame {
                         player.setRight(false);
                         break;
                     case KeyEvent.VK_UP:
+                        player.setUp(false);
+                        player.setDown(false);
                         break;
                 }
             }
