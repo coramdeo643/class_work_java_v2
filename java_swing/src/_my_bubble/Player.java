@@ -1,4 +1,4 @@
-package bubble.test02;
+package _my_bubble;
 
 import javax.swing.*;
 
@@ -22,15 +22,15 @@ public class Player extends JLabel implements Moveable {
     private boolean up;
     private boolean down;
 
-    // setter
     public void setLeft(boolean left) {
         this.left = left;
     }
-
     public void setRight(boolean right) {
         this.right = right;
     }
-
+    public void setUp(boolean up) {
+        this.up = up;
+    }
 
     public Player() {
         initData();
@@ -52,41 +52,41 @@ public class Player extends JLabel implements Moveable {
     }
 
     private void setInitLayout() {
-        setSize(50, 50);
+        setSize(50,50);
         setIcon(playerR);
-        setLocation(x, y);
+        setLocation(x,y);
     }
 
     @Override
     public void left() {
-        left = true;
+        left=true;
         setIcon(playerL);
+        //System.out.println("player left() method call");
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (left) {
-                    setLocation(x -= SPEED, y);
+                while (left && x > 55) {
+                    setLocation(x-=SPEED,y);
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } // while
-            } // run()
+                }
+            }
         }).start();
-
     }
 
     @Override
     public void right() {
-        right = true; // moving status modified
+        right=true; // moving status modified
         setIcon(playerR);
         // anonymous class - thread.start() - run() 구문 동작
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (right) {
-                    setLocation(x += SPEED, y);
+                while (right && x < 880 ) {
+                    setLocation(x+=SPEED,y);
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
@@ -105,7 +105,7 @@ public class Player extends JLabel implements Moveable {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < (130 / JUMP_SPEED); i++) {
+                for (int i = 0; (i < (130 / JUMP_SPEED)); i++) {
                     setLocation(x, y -= JUMP_SPEED);
                     try {
                         Thread.sleep(5);
@@ -116,8 +116,7 @@ public class Player extends JLabel implements Moveable {
                 up = false;
                 down();
             } // run()
-        }).start();
-    }
+        }).start();    }
 
     @Override
     public void down() {
@@ -126,7 +125,7 @@ public class Player extends JLabel implements Moveable {
             @Override
             public void run() {
                 for (int i = 0; i < (130 / JUMP_SPEED); i++) {
-                    setLocation(x, y += JUMP_SPEED);
+                    setLocation(x,y+=JUMP_SPEED);
                     try {
                         Thread.sleep(4);
                     } catch (InterruptedException e) {
@@ -136,6 +135,5 @@ public class Player extends JLabel implements Moveable {
                 down = false;
             }
         }).start();
-
     }
 }
