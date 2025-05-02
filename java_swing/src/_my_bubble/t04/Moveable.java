@@ -1,4 +1,4 @@
-package _my_bubble.t03;
+package _my_bubble.t04;
 
 // player move interface
 public interface Moveable {
@@ -10,6 +10,5 @@ public interface Moveable {
     void up();
 
     void down();
-
 
 }

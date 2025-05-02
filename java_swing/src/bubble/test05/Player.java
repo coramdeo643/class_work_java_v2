@@ -1,4 +1,4 @@
-package bubble.test04;
+package bubble.test05;
 
 import javax.swing.*;
 
@@ -25,6 +25,13 @@ public class Player extends JLabel implements Moveable {
     // wall touch status
     private boolean lWallTouch;
     private boolean rWallTouch;
+
+    // player direction status(how to use enum 1 - declare)
+    private PlayerWay playerWay;
+    // PlayerWay - construct getter only
+    public PlayerWay getPlayerWay() {
+        return playerWay;
+    }
 
     // Alt+Insert Getter Setter
     @Override
@@ -160,6 +167,8 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void left() {
+        // 클래스 이름으로 접근
+        playerWay = PlayerWay.LEFT;
         left = true;
         setIcon(playerL);
         new Thread(new Runnable() {
@@ -180,6 +189,7 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void right() {
+        playerWay = PlayerWay.RIGHT;
         right = true; // moving status modified
         setIcon(playerR);
         // anonymous class - thread.start() - run() 구문 동작

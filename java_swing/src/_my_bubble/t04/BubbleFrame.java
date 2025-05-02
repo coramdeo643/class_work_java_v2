@@ -1,4 +1,4 @@
-package _my_bubble.t03;
+package _my_bubble.t04;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -56,6 +56,16 @@ public class BubbleFrame extends JFrame {
                         if (player.isUp() == false) {
                             player.up();
                         }
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        if (player.isLeft()) {
+                            add(new BB(player));
+                            //BB.left();
+                        } else if (player.isRight()) {
+                            add(new BB(player));
+                            // BB.rightB(add(new BB(player)));
+                        }
+
                         break;
                 }
             }

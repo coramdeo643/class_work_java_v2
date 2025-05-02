@@ -1,4 +1,4 @@
-package bubble.test03;
+package bubble.test04;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -43,17 +43,19 @@ public class BubbleFrame extends JFrame {
                 //System.out.println("key : " + e.getKeyCode());
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
-                        if (player.isLeft() == false && player.islWallTouch() == false) { // 오른쪽으로 가고 있으면 left 수행, 아니면 break
+                        if (!player.isLeft() && !player.islWallTouch()) {
+                            // 오른쪽으로 가고 있으면 left 수행, 아니면 break
                             player.left();
                         }
                         break;
                     case KeyEvent.VK_RIGHT:
-                        if (player.isRight() == false && player.isrWallTouch() == false) { // 왼쪽으로 가고 있으면 right 수행, 아니면 break
+                        if (!player.isRight() && !player.isrWallTouch()) {
+                            // 왼쪽으로 가고 있으면 right 수행, 아니면 break
                             player.right();
                         }
                         break;
                     case KeyEvent.VK_UP:
-                        if (player.isUp() == false) {
+                        if (!player.isUp()) {
                             player.up();
                         }
                         break;
@@ -69,6 +71,11 @@ public class BubbleFrame extends JFrame {
                         player.setRight(false);
                         break;
                     case KeyEvent.VK_UP:
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        //TODO bubble
+                        // space bar = new bubble
+                        add(new Bubble(player));
                         break;
                 }
             }

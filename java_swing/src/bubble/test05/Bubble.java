@@ -1,8 +1,8 @@
-package bubble.test04;
+package bubble.test05;
 
 import javax.swing.*;
 
-public class Bubble extends JLabel {
+public class Bubble extends JLabel implements Moveable {
 
     private int x;
     private int y;
@@ -10,6 +10,10 @@ public class Bubble extends JLabel {
     private boolean left;
     private boolean right;
     private boolean up;
+
+    private boolean isL;
+    private boolean isR;
+
 
     private boolean lftWallTouch;
     private boolean rtWallTouch;
@@ -80,7 +84,23 @@ public class Bubble extends JLabel {
         this.player = player;
         init();
         setInitLO();
+        // bubble is enough for one thread
+        bubbleStartThread();
     }
+
+    private void bubbleStartThread() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(player.getPlayerWay() == PlayerWay.LEFT) {
+                    left();
+                } else {
+                    right();
+                }
+            }
+        }).start();
+    }
+
     private void init(){
         bubble = new ImageIcon("img/bubble.png");
         left = false;
@@ -93,5 +113,49 @@ public class Bubble extends JLabel {
         setIcon(bubble);
         setSize(50,50);
         setLocation(x,y);
+    }
+
+    @Override
+    public void left() {
+        left = true;
+        for (int i = 0; i < 400; i++) {
+            x--;
+            setLocation(x,y);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } // t-c
+        }// for
+        up();
+    }
+
+    @Override
+    public void right() {
+        right = true;
+        for (int i = 0; i < 400; i++) {
+            x++;
+            setLocation(x,y);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } // t-c
+        }// for
+        up();
+    }
+
+    @Override
+    public void up() {
+        up=true;
+        while(true) {
+            y--;
+            setLocation(x,y);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } // t-c
+        }
     }
 } // end of class

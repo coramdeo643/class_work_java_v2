@@ -1,4 +1,4 @@
-package bubble.test03;
+package bubble.test04;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -18,6 +18,7 @@ public class BackgroundPlayerService implements Runnable {
 
     // 생성자 의존 주입(DI, dependency Injection)*** = 연관 관계
     public BackgroundPlayerService(Player player) {
+        // player 직접 생성!
         this.player = player;
         try {
             image = ImageIO.read(new File("img/backgroundMapService.png"));
