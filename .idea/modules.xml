@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/basic_java1/basic_java1.iml" filepath="$PROJECT_DIR$/basic_java1/basic_java1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/class_work_space_java.iml" filepath="$PROJECT_DIR$/.idea/class_work_space_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_oop/java_oop.iml" filepath="$PROJECT_DIR$/java_oop/java_oop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_swing/java_swing.iml" filepath="$PROJECT_DIR$/java_swing/java_swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_useful0/java_useful0.iml" filepath="$PROJECT_DIR$/java_useful0/java_useful0.iml" />
+    </modules>
+  </component>
+</project>
