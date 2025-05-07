@@ -15,10 +15,10 @@ public class UniqueUserIDSystem {
     public UniqueUserIDSystem() {
         registeredIDs = new HashSet<>();
         // printAllIDs method test, sample data prepare
-        // TODO sample data preparation, will be deleted
-        registeredIDs.add("Hong");
-        registeredIDs.add("Teemo");
-        registeredIDs.add("Lee");
+//        // TODO sample data preparation, will be deleted
+//        registeredIDs.add("Hong");
+//        registeredIDs.add("Teemo");
+//        registeredIDs.add("Lee");
     }
 
     // 사용자 ID를 등록하는 메서드
