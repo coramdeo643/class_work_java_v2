@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 // Why use?
 // 도메인을 명시할떄

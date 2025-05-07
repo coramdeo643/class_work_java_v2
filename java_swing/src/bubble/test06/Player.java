@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 import javax.swing.*;
 
@@ -8,32 +8,30 @@ public class Player extends JLabel implements Moveable {
     private int y;
 
     private ImageIcon playerR;
-    private ImageIcon playerRDie;
     private ImageIcon playerL;
-    private ImageIcon playerLDie;
 
-    // player speed status
+    // 플레이어의 속도 상태
     private final int SPEED = 4;
     private final int JUMP_SPEED = 2;
 
-    // player moving status
+    // 플레이어의 움직인 상태
     private boolean left;
     private boolean right;
     private boolean up;
     private boolean down;
 
-    // wall touch status
-    private boolean lWallTouch;
-    private boolean rWallTouch;
+    // 벽에 충돌한 상태
+    private boolean leftWallCrash;
+    private boolean rightWallCrash;
 
-    // player direction status(how to use enum 1 - declare)
+    // 플레이어 방향 상태 (enum 타입 사용 법 1 - 선언 )
     private PlayerWay playerWay;
-    // PlayerWay - construct getter only
+
+    // PlayerWay - getter 만 생성
     public PlayerWay getPlayerWay() {
         return playerWay;
     }
 
-    // Alt+Insert Getter Setter
     @Override
     public int getX() {
         return x;
@@ -48,16 +46,8 @@ public class Player extends JLabel implements Moveable {
         return playerR;
     }
 
-    public ImageIcon getPlayerRDie() {
-        return playerRDie;
-    }
-
     public ImageIcon getPlayerL() {
         return playerL;
-    }
-
-    public ImageIcon getPlayerLDie() {
-        return playerLDie;
     }
 
     public int getSPEED() {
@@ -84,12 +74,12 @@ public class Player extends JLabel implements Moveable {
         return down;
     }
 
-    public boolean islWallTouch() {
-        return lWallTouch;
+    public boolean isLeftWallCrash() {
+        return leftWallCrash;
     }
 
-    public boolean isrWallTouch() {
-        return rWallTouch;
+    public boolean isRightWallCrash() {
+        return rightWallCrash;
     }
 
     public void setX(int x) {
@@ -104,16 +94,8 @@ public class Player extends JLabel implements Moveable {
         this.playerR = playerR;
     }
 
-    public void setPlayerRDie(ImageIcon playerRDie) {
-        this.playerRDie = playerRDie;
-    }
-
     public void setPlayerL(ImageIcon playerL) {
         this.playerL = playerL;
-    }
-
-    public void setPlayerLDie(ImageIcon playerLDie) {
-        this.playerLDie = playerLDie;
     }
 
     public void setLeft(boolean left) {
@@ -132,12 +114,12 @@ public class Player extends JLabel implements Moveable {
         this.down = down;
     }
 
-    public void setlWallTouch(boolean lWallTouch) {
-        this.lWallTouch = lWallTouch;
+    public void setLeftWallCrash(boolean leftWallCrash) {
+        this.leftWallCrash = leftWallCrash;
     }
 
-    public void setrWallTouch(boolean rWallTouch) {
-        this.rWallTouch = rWallTouch;
+    public void setRightWallCrash(boolean rightWallCrash) {
+        this.rightWallCrash = rightWallCrash;
     }
 
     public Player() {
@@ -147,12 +129,11 @@ public class Player extends JLabel implements Moveable {
 
     private void initData() {
         playerR = new ImageIcon("img/playerR.png");
-        playerRDie = new ImageIcon("img/playerRDie.png");
         playerL = new ImageIcon("img/playerL.png");
-        playerLDie = new ImageIcon("img/playerLDie.png");
-        // player initial location status
+        // 플레이어 초기 상태 설정
         x = 55;
         y = 535;
+
         left = false;
         right = false;
         up = false;
@@ -160,14 +141,17 @@ public class Player extends JLabel implements Moveable {
     }
 
     private void setInitLayout() {
+
+
         setSize(50, 50);
         setIcon(playerR);
         setLocation(x, y);
     }
 
+
     @Override
     public void left() {
-        // 클래스 이름으로 접근
+        // 클래스 이름으로 접근한다.
         playerWay = PlayerWay.LEFT;
         left = true;
         setIcon(playerL);
@@ -175,29 +159,31 @@ public class Player extends JLabel implements Moveable {
             @Override
             public void run() {
                 while (left) {
-                    setLocation(x -= SPEED, y);
+                    x = x - SPEED;
+                    setLocation(x, y);
+
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } // while
-            } // run()
+                } // end of while
+            } // end of run()
         }).start();
-
     }
 
     @Override
     public void right() {
         playerWay = PlayerWay.RIGHT;
-        right = true; // moving status modified
+        right = true; // 움직임 상태값 변경
         setIcon(playerR);
-        // anonymous class - thread.start() - run() 구문 동작
+        // 익명 클래스 - thread.start() ---> run() 메서안에 구문 동작된다.
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (right) {
-                    setLocation(x += SPEED, y);
+                    x = x + SPEED;
+                    setLocation(x, y);
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
@@ -205,29 +191,31 @@ public class Player extends JLabel implements Moveable {
                     }
                 }
             }
-        }).start(); // 객체 생성후 바로 start
-        //System.out.println("player right() method call");
-        //setLocation(x+=10,y);
+        }).start();
     }
 
     @Override
     public void up() {
+        System.out.println("점프!");
         up = true;
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < (130 / JUMP_SPEED); i++) {
-                    setLocation(x, y -= JUMP_SPEED);
+                for(int i = 0; i < 130 / JUMP_SPEED; i++) {
+                    y = y - JUMP_SPEED;
+                    setLocation(x, y);
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } // for
-                up = false;
+                } // end of for
+                up = false; // 상태값을 잘 다루어야 버그가 없다.
                 down();
-            } // run()
+            }
         }).start();
+
+
     }
 
     @Override
@@ -236,15 +224,16 @@ public class Player extends JLabel implements Moveable {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < (130 / JUMP_SPEED); i++) {
-                    setLocation(x, y += JUMP_SPEED);
+                while (down) {
+                    y = y + JUMP_SPEED;
+                    setLocation(x, y);
                     try {
-                        Thread.sleep(4);
+                        Thread.sleep(3);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                }
-                down = false;
+                } // end of while
+                down = false; // 상태값을 확실하게 처리하자.
             }
         }).start();
 

@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 // player move interface
 public interface Moveable {
