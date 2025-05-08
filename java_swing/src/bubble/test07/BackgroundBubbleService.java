@@ -44,5 +44,14 @@ public class BackgroundBubbleService {
         }
     }
 
+    public boolean topWall() {
+        Color topColor = new Color(image.getRGB(bubble.getX()+25, bubble.getY()));
+        if (topColor.getRed() == 255 && topColor.getBlue() == 0 && topColor.getGreen() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }

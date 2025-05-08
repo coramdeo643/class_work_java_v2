@@ -19,6 +19,7 @@ public class Bubble extends JLabel implements Moveable {
     private boolean rtWallTouch;
 
     private ImageIcon bubble; // BASIC BUBBLE
+    private ImageIcon bomb; // popped BUBBLE
 
     private Player player;
     private BackgroundBubbleService backgroundBubbleService;
@@ -122,6 +123,7 @@ public class Bubble extends JLabel implements Moveable {
 
     private void init() {
         bubble = new ImageIcon("img/bubble.png");
+        bomb = new ImageIcon("img/bomb.png");
         left = false;
         right = false;
         up = false;
@@ -179,11 +181,24 @@ public class Bubble extends JLabel implements Moveable {
         while (true) {
             y--;
             setLocation(x, y);
+            if (backgroundBubbleService.topWall()) {
+
+                break;
+            }
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             } // t-c
+        }
+        try {
+            Thread.sleep(1000);
+            setIcon(bomb);
+            Thread.sleep(500);
+            setIcon(null);
+            //TODO null 말고 다른것으로 수정 예정?
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 } // end of class

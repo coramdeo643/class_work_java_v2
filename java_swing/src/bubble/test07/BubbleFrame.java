@@ -70,7 +70,7 @@ public class BubbleFrame extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                System.out.println("code : " + e.getKeyCode());
+                //System.out.println("code : " + e.getKeyCode());
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
                         // 왼쪽으로 가고 있다면 멈춰(while 종료) -- 스레드 종료 됨

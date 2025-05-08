@@ -40,7 +40,7 @@ public class BackgroundPlayerService implements Runnable {
             // 바닥 감지 기능 개발
             // 하얀색 (255, 255, 255, 255) 는 --> image.getRGB() --> 16진수 정수값을 반환 - 1 하얀색
             int bottomColorLeft = image.getRGB(player.getX() + 20 , player.getY() + 55  );
-            System.out.println("bottomColorLeft : " + bottomColorLeft);
+            //System.out.println("bottomColorLeft : " + bottomColorLeft);
             int bottomColorRight = image.getRGB(player.getX() + 50, player.getY() + 55);
 
             if(bottomColorLeft + bottomColorRight != -2) {
@@ -64,12 +64,12 @@ public class BackgroundPlayerService implements Runnable {
             // rightColor - 논리적로 255, 0, 0 이면 오른쪽 벽에 충돌함으로 판단.
             if (leftColor.getRed() == 255 && leftColor.getGreen() == 0 && leftColor.getBlue() == 0) {
                 // 빨간색으로 판별 --> 왼쪽벽에 충돌 상태이다.
-                System.out.println("왼쪽벽에 충돌");
+                //System.out.println("왼쪽벽에 충돌");
                 player.setLeftWallCrash(true);
                 player.setLeft(false); // 왼쪽 이동 쓰레드 종료
             } else if(rightColor.getRed() == 255 && rightColor.getGreen() == 0 && rightColor.getBlue() == 0 ) {
                 // 빨간색으로 판별 --> 오른쪽에 충돌 상태이다.
-                System.out.println("오른쪽벽에 충돌");
+                //System.out.println("오른쪽벽에 충돌");
                 player.setRight(false); // 오른쪽 이동 쓰레드 종료
                 player.setRightWallCrash(true);
             } else {

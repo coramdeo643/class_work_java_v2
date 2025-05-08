@@ -196,7 +196,7 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void up() {
-        System.out.println("점프!");
+        //System.out.println("점프!");
         up = true;
         new Thread(new Runnable() {
             @Override
