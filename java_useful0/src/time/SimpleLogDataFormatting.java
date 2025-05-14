@@ -2,6 +2,7 @@ package time;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Locale;
 
 public class SimpleLogDataFormatting {
@@ -15,8 +16,6 @@ public class SimpleLogDataFormatting {
         DateTimeFormatter format4 = DateTimeFormatter.ofPattern("a hh시 mm분");
         DateTimeFormatter format5 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         DateTimeFormatter format6 = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분");
-        DateTimeFormatter format7 = DateTimeFormatter.ofPattern("a", Locale.JAPAN);
-        System.out.println("now.format(format7) = " + now.format(format7));
 
         System.out.println("format1 = " + now.format(format1));
         System.out.println("format2 = " + now.format(format2));
@@ -25,5 +24,7 @@ public class SimpleLogDataFormatting {
         System.out.println("format5 = " + now.format(format5));
         System.out.println("format6 = " + now.format(format6));
 
+        DateTimeFormatter format7 = DateTimeFormatter.ofPattern("a", Locale.JAPAN);
+        System.out.println("now.format(format7) = " + now.format(format7));
     }
 }

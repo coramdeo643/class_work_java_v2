@@ -1,6 +1,7 @@
 package time;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class DurationExample {
@@ -11,6 +12,6 @@ public class DurationExample {
         Duration duration = Duration.between(start, end);
         System.out.println("소요 시간(분) = " + duration.toMinutes() + " mins");
         System.out.println("소요 시간(초) = " + duration.toSeconds() + " secs");
-        
+
     }
 }
