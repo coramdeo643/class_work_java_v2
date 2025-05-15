@@ -1,8 +1,40 @@
 package ch02;
 
+import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
-public class JDBCExample2 {
+public class qwe extends JFrame {
+
+    private MyPanel myPanel;
+
+    public qwe() {
+        initData();
+        setInitLayout();
+    }
+
+    private void initData() {
+        setTitle("MyPaintFrame");
+        setSize(500, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+        myPanel = new MyPanel();
+    }
+
+    private void setInitLayout() {
+        super.add(myPanel);
+    }
+
+    static class MyPanel extends JPanel {
+        @Override
+        public void paint(Graphics g) {
+            super.paint(g);
+            String str = "emp_no" ;
+            g.drawString(str,100,100);
+        }
+    } // end of static inner class
+
     public static void main(String[] args) {
 
         String url = "jdbc:mysql://localhost:3306/employees?serverTimezone=Asia/Seoul";
@@ -42,5 +74,6 @@ public class JDBCExample2 {
                 System.out.println("Error : " + e.getMessage());
             }
         }
-    }
-}
+        new qwe();
+    } // end of main
+} // end of class
