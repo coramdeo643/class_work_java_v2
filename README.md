@@ -1,1 +1,3 @@
-Java class
+# Java class note
+
+Learning Java
