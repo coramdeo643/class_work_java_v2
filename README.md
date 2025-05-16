@@ -1,3 +1,3 @@
 # Java class note 💻
 
-Learning Java 🙂
+Learning Java 😁
